@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.css') }}">      
+    <!-- JS-->
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery/jquery-3.3.1.js') }}"></script>
+    <title>Add Your Question Here!</title>
+  </head>
+  <body>
+    <!--Flash message-->
+    {% with messages = get_flashed_messages(category_filter=["Error"]) %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <!-- Main form section-->
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-6 col-xl-4">
+                <div class="col-12">
+                    <h3>Your Answer - <a href="/showAnswers">back</a></h3>
+                </div>
+                <div class="col-12">
+                    <form action="/answer" method="POST" role="form">
+                        <textarea name="answer_content" class="common-form my-textarea btn-block"  placeholder="Write your answer..." rows="6"></textarea><br><br>
+                    <button type="submit" class="btn btn-index btn-block">Submit</button><br>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
+

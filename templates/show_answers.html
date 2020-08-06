@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/show-answers.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.css') }}">      
+    <!-- JS-->
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery/jquery-3.3.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery/jquery.js') }}"></script>
+    <title>A N S W E R S </title>
+</head>
+<body style="font-family:'Quicksand';">
+<div class="container">
+    <div class="row text-center justify-content-center">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-4 my-carousel">
+            
+
+            {%if not post_id%}
+            <h6>Select Question!</h6>
+            {%endif%}
+            {% if post_id %}
+                <div class="carousel slide" id="slides" data-ride="carousel" data-interval="9000000">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                    <div class="card">
+                        <div class="card-header">
+                        <div class="card-header-left">
+                            <button class="btn btn-index btn-block">{{numberOfAnswers}} Answers</button>
+                        </div>
+                        <div class="card-header-right">
+                            <form action="/answer">
+                            <button type="submit" class="btn btn-index btn-block">Post Answer</button>
+                            </form>
+                        </div>
+                        </div><br><br><br>
+                        <div class="card-body">
+                        <div class="card-body-text">
+                            <h6>Slide To see Answers</h6><br><br><br>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="carousel-item">
+                            <div class="card">
+                            <div class="card-header">
+                                <form action="/answer">
+                                <button type="submit" class="btn btn-index btn-block">Post Answer</button>
+                                </form>
+                            </div>
+                            <div class="card-body"><br>
+                                <div class="card-body-text">
+                                <p class="text-h4">{{ message[2] }}</p><br><hr>
+
+                                <p class="text-h3">{{ message[3]}}</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <div class="carousel-item">
+                    <div class="card">
+                        <br><br><br>
+                        <div class="card-body">
+                        <div class="card-body-text">
+                            <h6 class="text-h4">This is all</h6>
+                            <h6 class="text-h4">Add your answer below!</h6><br><hr>
+                            <form action="/answer">
+                            <button type="submit" class="btn btn-index btn-block">Post Answer</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#slides" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#slides" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                </div>
+            {%endif%}
+          
+
+
+        </div>
+    </div>
+</div>
+   
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">    
+    <!-- JS-->
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery/jquery-3.3.1.js') }}"></script>
+    <title>R E G I S T E R</title>
+</head>
+<body style="font-family: 'Quicksand';">
+    <!--Flash message-->
+    {% with messages = get_flashed_messages(category_filter=["Error"]) %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <section class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xs-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 my-col-register">
+                
+                <form action="/register" method="POST" class="form-horizontal my-form" role="form">
+                    <h2 class="text-center">R E G I S T E R</h2>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="outer-input">
+                                <input type="text" name="username-text" class="form-control" id="email" placeholder="Username">
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="outer-input">
+                                <input type="text" name="email-or-phone-text" class="form-control" id="email" placeholder="Email">
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12"> 
+                            <div class="outer-input">
+                                <input type="password" name="password-text" class="form-control" id="pwd" placeholder="Create Password">
+                            </div>         
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12">  
+                            <div class="outer-input">
+                                <input type="password" name="password-confirm-text" class="form-control" id="pwd" placeholder="Confirm Password">
+                            </div>        
+                        </div>
+                    </div>
+                    <div class="form-group">        
+                        <div class="col-sm-offset-2 col-12">
+                            <button type="submit" class="btn btn-primary btn-block btn-login">Create Account</button>
+                        </div>
+                    </div><br>
+                        <div class="container">
+                            <div class="row text-center">
+                                <div class="col ml-auto">
+                                    Already have an account? <a href="/">Login here</a>
+                                </div>
+                            </div>
+                        </div><br><br class="unseen-on-small">
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

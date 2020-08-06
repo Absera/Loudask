@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.css') }}">      
+    <!-- JS-->
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery/jquery-3.3.1.js') }}"></script>
+
+    <title>H O M E</title>
+</head>
+<body style="font-family: 'Quicksand';">
+    <div class="my-container">
+        <div class="row text-center justify-content-center">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <nav class="navigation">
+                    <div class="navigation-items">
+                        <div class="row">
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="{{ url_for('home') }}"><i class="fa fa-2x fa-home nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="#{{ postIdOfSelectedQuestion }}"><i class="fa fa-2x fa-flag nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item"href="{{ url_for('postQuestionAction') }}"><i class="fa fa-2x fa-plus-square  nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="{{ url_for('showMyQuestions') }}"><i class="fa fa-2x fa-user  nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="#about"><i class="fa fa-2x fa-gear  nav-icon">
+                                </i></a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div> <br>
+    <!--Flash message-->
+    {% with messages = get_flashed_messages(category_filter=["Error"]) %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <div class="container">
+        <div class="row text-center">
+            <div class="col embed-responsive" style="height:500px;">
+                <iframe src="/showAnswers" class="embed-responsive-item" frameborder="2" ></iframe>        
+            </div>
+        </div>
+        
+    </div>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row text-center">
+                        <div class="col-md-2 col-lg-3 col-xl-4">
+
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-4">
+                            <div class="card bg-dark text-white my-card" id="{{ message[3] }}" style="border-bottom-right-radius: 30px;">
+                                <div class="card-header">
+                                    <div class="row">
+                                        {% if message[0] == "Technology" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Science" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Education" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Social" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Politics" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Sport" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Books" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Relationship" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Other" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        {% if message[0] == "Entertainment" %}
+                                        <div class="col-3">
+                                            <div class="card-header-icon-wrap"><i class="fa fa-"></i></div>
+                                        </div>
+                                        {% endif %}
+                                        <div class="col-7">
+                                            <h4>{{ message[0] }}</h4>
+                                        </div>
+                                        <div class="col-2">
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <p>{{ message[1] }}</p>
+                                </div>
+                                <div class="footer">
+                                    <form action="/index" method="POST">
+                                        <button type="submit" value="{{ message[3] }}" name="select-btn" class="btn btn-primary btn-block btn-show-answer">Show Answer</button>
+                                    </form>
+                                </div>
+                            </div> <hr>
+                        </div>
+                        <div class="col-md-2 col-lg-3 col-xl-4">
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <a href="#" class="alink"><button type="submit" name="button" class="button link-to-locked-post">Back To Top</button></a>
+    </div>
+    
+</body>
+</html>

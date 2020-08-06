@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.css') }}">      
+    <!-- JS-->
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery/jquery-3.3.1.js') }}"></script>
+    <title>Add Your Question Here!</title>
+  </head>
+  <body>
+    <header>
+      <div class="my-container">
+        <div class="row text-center justify-content-center">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <nav class="navigation">
+                    <div class="navigation-items">
+                        <div class="row">
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="{{ url_for('home') }}"><i class="fa fa-2x fa-home nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="#{{ postIdOfSelectedQuestion }}"><i class="fa fa-2x fa-flag nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item"href="{{ url_for('postQuestionAction') }}"><i class="fa fa-2x fa-plus-square  nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="{{ url_for('showMyQuestions') }}"><i class="fa fa-2x fa-user  nav-icon"></i></a>
+                            </div>
+                            <div class="col nav-item-icon">
+                                <a class="navigation-item" href="#about"><i class="fa fa-2x fa-gear  nav-icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div> <br>
+    </header>
+    <!--Flash message-->
+    {% with messages = get_flashed_messages(category_filter=["Error"]) %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <!-- Main form section-->
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-6 col-xl-4">
+                <div class="col-12">
+                    <h3>Post Question</h3>
+                </div>
+                <div class="col-12">
+                    <form action="/questions" method="POST" role="form">
+
+                        <select class="form-control my-select" name="select" id="select">
+                          <option value="None">Select Topic</option>
+                          <option value="Technology">Technology</option>
+                          <option value="Science">Science</option>
+                          <option value="Education">Education</option>
+                          <option value="Social">Social</option>
+                          <option value="Politics">Politics</option>
+                          <option value="Sport">Sport</option>
+                          <option value="Books">Books</option>
+                          <option value="Relationship">Relationship</option>
+                          <option value="Other">Other</option>
+                          <option value="Entertainment">Entertainment</option>
+                        </select><br>
+                        <textarea name="post-content" class="common-form my-textarea btn-block"  placeholder="Write your question..." rows="6"></textarea><br><br>
+   
+                    <button type="submit" class="btn btn-index btn-block">Submit</button><br>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>

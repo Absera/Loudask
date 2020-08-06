@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">    
+    <!-- JS-->
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery/jquery-3.3.1.js') }}"></script>
+    <title>L O G I N</title>
+</head>
+<body style="font-family: 'Quicksand';">
+    <!--Flash message-->
+    {% with messages = get_flashed_messages(category_filter=["Error"]) %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert">
+            {{ message }}
+            </div>
+
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 my-col-login">
+                
+                <form action="/" method="POST" class="form-horizontal my-form" role="form"><br class="unseen-on-small">
+                    <h2 class="text-center">L O G I N</h2><br>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="outer-input">
+                                <input type="text" name="email-or-phone-login" class="form-control my-form-control" id="email" placeholder="Enter email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12">  
+                            <div class="outer-input">
+                                <input type="password" name="password-login" class="form-control" id="pwd" placeholder="Enter password">
+                            </div>        
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">      
+                            <div class="col-sm-offset-2 col-sm-10">
+                              <div class="checkbox">
+                                <label><input type="checkbox"> Keep me signed in</label>
+                              </div>
+                            </div>
+                    </div>
+                    <div class="form-group">        
+                        <div class="col-sm-offset-2 col-12">
+                            <button type="submit" class="btn btn-primary btn-block btn-login">Submit</button>
+                        </div>
+                    </div><br>
+                        <div class="container">
+                            <div class="row text-center">
+                                <div class="col">
+                                    Don't have an account? <a href="/register">Register</a>
+                                </div>
+                            </div>
+                        </div><br class="unseen-on-small"><br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

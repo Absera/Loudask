@@ -1,0 +1,48 @@
+body{
+    background-image: url('/static/images/login-background.PNG');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+}
+.my-form{
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 6px 6px 7px black;
+    background: white;
+    filter: blur(0.1px);
+}
+.my-col-login{
+    position: absolute;
+    top:7%;
+}
+div.outer-input{
+    border-bottom: 2px solid #c0392b;
+    position: relative;
+    margin: 30px 0;
+}
+div.outer-input input{
+    border: none;
+}
+
+.my-col-register{
+    position: absolute;
+    top:6%;
+}
+.btn-login{
+    border-radius: 30px;
+    padding: 10px;
+}
+input[type="email"]:focus{
+    border-color: red;
+    outline: 0;
+    box-shadow:green ;
+
+}
+@media only screen and (max-width:670px){
+    body{
+        background-size: auto;
+    }
+    .unseen-on-small{
+        display: none;
+    }
+}

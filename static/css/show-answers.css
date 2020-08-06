@@ -1,0 +1,82 @@
+::-moz-selection { /* Code for Firefox */
+    color: #c0392b;
+    background: #bdc3c7;
+  }
+  
+  ::selection {
+      color: #c0392b;
+      background: #bdc3c7;
+  }
+  .carousel{
+    width: 100%;    
+    border-radius: 15px;
+    background: transparent;
+  }
+  
+  .carousel-inner{
+    width: 100%;
+    height:100%;
+    border-radius: 15px;
+    background: transparent;
+    text-align: center;
+    transition: .5s;
+  }
+  
+  .carousel-item{
+    transition: .5s;
+  }
+  
+  .carousel-control-prev{
+    background: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin: auto;
+    transition: .5s;
+    opacity: .15;
+  }
+
+  .carousel-control-next{
+    background: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin: auto;
+    transition: .5s;
+    opacity: .15;
+  }
+  
+  .carousel-control-next:hover{
+    background: black;
+    width: 40px;
+  }
+  .carousel-control-prev:hover{
+    background: black;
+    width: 40px;
+  }
+  
+  .card-header-left{
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .card-header-right{
+    float: right;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+  }
+  .btn-index{
+    border-radius: 30px;
+    padding: 10px;
+    background-image: linear-gradient(120deg, #fd7e14, hsl(39, 100%, 51%));
+    background-size: 200%;
+    color: antiquewhite;
+    transition: .5s;
+}
+.btn-index:hover{
+    background-position: right;
+    color: white;
+}
